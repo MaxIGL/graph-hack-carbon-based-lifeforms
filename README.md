@@ -1,4 +1,4 @@
-![]('[./near-dapp/src/assets/img/logo.png](https://raw.githubusercontent.com/jimmylies/graph-hack-carbon-based-lifeforms/194071ef76827b482777cb2479b22843f7f89941/near-dapp/src/assets/img/logo.png)')
+![]('https://raw.githubusercontent.com/jimmylies/graph-hack-carbon-based-lifeforms/194071ef76827b482777cb2479b22843f7f89941/near-dapp/src/assets/img/logo.png')
 
 # In our GitHub you can find:
 
