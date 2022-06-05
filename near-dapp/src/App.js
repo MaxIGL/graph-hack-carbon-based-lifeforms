@@ -11,9 +11,6 @@ import news3 from "./assets/img/news3.jpg";
 import globalCoca from "./assets/img/globalCompany.png";
 import emissionCocaEx from "./assets/img/emission.png";
 import locCocaEx from "./assets/img/mas.png";
-import bg from "./assets/img/bg.jpg";
-
-import pres from "./assets/vid/planet-explorer.mp4";
 
 const APIURL =
   "https://gateway.thegraph.com/api/76fe8eaf2e7243c3acec7f2a430e9991/subgraphs/id/3nXfK3RbFrj6mhkGdoKRowEEti2WvmUdxmz73tben6Mb";
