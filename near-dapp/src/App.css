@@ -84,12 +84,12 @@ a {
   justify-content: left;
   align-items: center;
   font-size: 3.5rem;
-  color: #efefef;
+  color: #ebeaea;
   font-weight: 1000;
   font-style: italic;
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
-  margin-top: 25vh;
+  margin-top: 27vh;
   margin-left: 3rem;
 }
 
@@ -225,35 +225,35 @@ a {
 /* 1st */
 
 .company:first-child .line:first-child .complete {
-  width: 50%;
+  width: 85%;
 }
 
 .company:first-child .line:nth-child(2) .complete {
-  width: 60%;
+  width: 45%;
 }
 
 .company:first-child .line:last-child .complete {
-  width: 87%;
+  width: 74%;
 }
 
 /* 2nd */
 
 .company:nth-child(2) .line:first-child .complete {
-  width: 50%;
+  width: 10%;
 }
 
 .company:nth-child(2) .line:nth-child(2) .complete {
-  width: 40%;
+  width: 20%;
 }
 
 .company:nth-child(2) .line:last-child .complete {
-  width: 85%;
+  width: 95%;
 }
 
 /* 3rd */
 
 .company:last-child .line:first-child .complete {
-  width: 70%;
+  width: 95%;
 }
 
 .company:last-child .line:nth-child(2) .complete {
@@ -261,7 +261,7 @@ a {
 }
 
 .company:last-child .line:last-child .complete {
-  width: 79%;
+  width: 65%;
 }
 
 .more-soon {
@@ -353,6 +353,32 @@ a {
 
 .soon {
   margin-bottom: 1.5rem;
+}
+
+/* Push your own data */
+
+.container-submit {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 15vh;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+input,
+button {
+  height: 2rem;
+  width: 50%;
+  border-radius: 5px;
+  text-align: center;
+}
+
+button {
+  margin-top: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
 }
 
 footer {

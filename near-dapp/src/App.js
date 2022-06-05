@@ -12,27 +12,28 @@ import globalCoca from "./assets/img/globalCompany.png";
 import emissionCocaEx from "./assets/img/emission.png";
 import locCocaEx from "./assets/img/mas.png";
 
-const APIURL =
-  "https://gateway.thegraph.com/api/76fe8eaf2e7243c3acec7f2a430e9991/subgraphs/id/3nXfK3RbFrj6mhkGdoKRowEEti2WvmUdxmz73tben6Mb";
 
+// const { connect, keyStores, providers, utils, WalletConnection } = nearApi;
+
+
+
+// Setupi for call the subgraph
+const APIURL = "https://api.thegraph.com/subgraphs/name/jimmylies/co2tracker";
 const query = `
   query {
-    tokens(
+    emissions(
       first: 5
-      orderBy: symbol
-      orderDirection: desc
     ) {
       id
-      name
-      symbol
-      decimals
+      company
+      co2_emissions
     }
   }
 `;
-
 const client = createClient({
   url: APIURL,
 });
+
 
 
 function App() {
@@ -43,6 +44,9 @@ function App() {
     // fetchData();
     fetchJsonFileCoin();
   }, []);
+
+
+  // Query to get the data from the subgraph
 
   // async function fetchData() {
   //   const response = await client.query(query).toPromise();
@@ -76,6 +80,70 @@ function App() {
     company.classList.toggle("display-details");
   }
 
+
+  /*
+  const submit = async () => {
+
+    // Setup Near wallet connexion
+    const keyStore = new keyStores.BrowserLocalStorageKeyStore();
+    const config = {
+      networkId: "testnet",
+      keyStore,
+      nodeUrl: "https://rpc.testnet.near.org",
+      walletUrl: "https://wallet.testnet.near.org",
+      helperUrl: "https://helper.testnet.near.org",
+      explorerUrl: "https://explorer.testnet.near.org",
+    };
+    const near = await connect(config)
+    const wallet = new WalletConnection(near);
+
+    // Transaction to add a new company CO2 emission
+
+
+
+    if (wallet.isSignedIn()) {
+      showScreen('main');
+
+      const account = wallet.account();
+      document.querySelector('account').textContent = account.accountId;
+
+      const balance = await wallet.account().getAccountBalance();
+      document.querySelector('balance').textContent = utils.format.formatNearAmount(balance.available, 5);
+
+      const contractId = 'dev-1654387726094-29127091483937';
+      const jsvmId = 'jsvm.testnet';
+      const contract = new JSContract(account, contractId, jsvmId);
+
+      let emissions = await contract.view('getEmissions', JSON.stringify([account.accountId]));
+      if (!emissions) {
+        emissions = 0;
+      }
+      document.querySelector('emissions').textContent = emissions;
+
+      document.querySelectorAll('button[data-cost]').forEach((button) => {
+        button.onclick = () => {
+          const cost = parseFloat(button.getAttribute('data-cost'));
+          if (cost) {
+            emissions += cost;
+          }
+          else {
+            emissions = 0;
+          }
+          contract.call('setEmissions', JSON.stringify([emissions]));
+        };
+      });
+    }
+
+  }
+
+  const signIn = () => {
+    wallet.requestSignIn('jsvm.testnet');
+  }
+
+  */
+
+
+
   return (
     <div className="app">
       <header id="header">
@@ -83,10 +151,10 @@ function App() {
         <a href="#ranking">Company Ranking</a>
         <a href="#concentration-map">CO2 concentration map</a>
         <a href="#news">News</a>
-        <a href="#">Green Bets</a>
-        <a href="#">Bounty Hunting</a>
         <a href="#events">Archives</a>
-        <a href="#">DAO</a>
+        <a href="#bets">Green Bets</a>
+        <a href="#bounty">Bounty Hunting</a>
+        <a href="#dao">DAO</a>
       </header>
       <div className="container">
         <div className="bg-container">
@@ -108,7 +176,7 @@ function App() {
                     <div className="complete"></div>
                   </div>
                   <div className="line-data">
-                    383t CO2 emitted
+                    5Mt CO2 emitted
                   </div>
                 </div>
                 <div className="line">
@@ -116,7 +184,7 @@ function App() {
                     <div className="complete"></div>
                   </div>
                   <div className="line-data">
-                    580t CO2 removed
+                    200kt CO2 removed
                   </div>
                 </div>
                 <div className="line">
@@ -124,7 +192,7 @@ function App() {
                     <div className="complete"></div>
                   </div>
                   <div className="line-data">
-                    Score of 87
+                    Score of 74
                   </div>
                 </div>
               </div>
@@ -152,7 +220,7 @@ function App() {
                     <div className="complete"></div>
                   </div>
                   <div className="line-data">
-                    368t CO2 emitted
+                    30kt CO2 emitted
                   </div>
                 </div>
                 <div className="line">
@@ -160,7 +228,7 @@ function App() {
                     <div className="complete"></div>
                   </div>
                   <div className="line-data">
-                    439t CO2 removed
+                    20kt CO2 removed
                   </div>
                 </div>
                 <div className="line">
@@ -168,7 +236,7 @@ function App() {
                     <div className="complete"></div>
                   </div>
                   <div className="line-data">
-                    Score of 85
+                    Score of 95
                   </div>
                 </div>
               </div>
@@ -186,7 +254,7 @@ function App() {
                     <div className="complete"></div>
                   </div>
                   <div className="line-data">
-                    200t CO2 emitted
+                    22Mt CO2 emitted
                   </div>
                 </div>
                 <div className="line">
@@ -194,7 +262,7 @@ function App() {
                     <div className="complete"></div>
                   </div>
                   <div className="line-data">
-                    650t CO2 removed
+                    120kt CO2 removed
                   </div>
                 </div>
                 <div className="line">
@@ -202,7 +270,7 @@ function App() {
                     <div className="complete"></div>
                   </div>
                   <div className="line-data">
-                    Score of 79
+                    Score of 65
                   </div>
                 </div>
               </div>
@@ -210,6 +278,17 @@ function App() {
 
           </div>
           <div className="more-soon" id="concentration-map">More soon..</div>
+        </div>
+
+        <div className="part">
+          <h1>Push your own data</h1>
+
+          <div className="signIn">Log-in</div>
+          <div className="container-submit">
+            <span>Enter the company</span><input type="text" />
+            <span>Enter the CO2 emitted (kt / year)</span><input type="number" />
+          </div>
+          <button>Submit</button>
         </div>
 
         <div className="part">
@@ -299,7 +378,7 @@ function App() {
 
 
         <div className="part">
-          <h1>Green Bets</h1>
+          <h1 id="bets">Green Bets</h1>
           <div className="soon">
             Coming soon..
           </div>
@@ -307,14 +386,14 @@ function App() {
 
 
         <div className="part">
-          <h1>Bounty Hunting</h1>
+          <h1 id="bounty">Bounty Hunting</h1>
           <div className="soon">
             Coming soon..
           </div>
         </div>
 
         <div className="part">
-          <h1>DAO</h1>
+          <h1 id="dao">DAO</h1>
           <div className="soon">
             Coming soon..
           </div>
