@@ -1,4 +1,4 @@
-![]('near-dapp/src/assets/img/logo.png')
+![]('./near-dapp/src/assets/img/logo.png')
 
 Dapp link : http://10.70.1.167:3000
 
