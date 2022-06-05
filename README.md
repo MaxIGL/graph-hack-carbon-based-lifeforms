@@ -1,4 +1,4 @@
-![]('near-dapp/src/assets/img/logo.png')
+![]('./near-dapp/src/assets/img/logo.png')
 
 # In our GitHub you can find:
 
