@@ -1,3 +1,5 @@
+![]('near-dapp/src/assets/img/logo.png')
+
 # In our GitHub you can find:
 
 1. CO2 emission tracking first database from satellite imagery
